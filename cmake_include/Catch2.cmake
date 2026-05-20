@@ -10,7 +10,8 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(maf_tests
     tests/core/HelloTests.cpp
-)
+    tests/utils/MathTests.cpp
+    )
 
 target_link_libraries(maf_tests
     PRIVATE
