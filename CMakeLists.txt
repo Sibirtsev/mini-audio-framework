@@ -39,13 +39,4 @@ target_link_libraries(maf_hello
 
 enable_testing()
 
-add_executable(maf_core_tests
-    tests/core/HelloTests.cpp
-)
-
-target_link_libraries(maf_core_tests
-    PRIVATE
-        maf_core
-)
-
-add_test(NAME maf_core_tests COMMAND maf_core_tests)
+include(cmake_include/Catch2.cmake)
