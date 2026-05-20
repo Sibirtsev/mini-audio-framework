@@ -1,11 +1,8 @@
+#include <catch2/catch_test_macros.hpp>
+
 #include <maf/core/Hello.h>
 
-int main()
+TEST_CASE("Hello")
 {
-    if (maf::core::hello() != "hello")
-    {
-        return 1;
-    }
-
-    return 0;
+    REQUIRE(maf::core::hello() == "hello");
 }
