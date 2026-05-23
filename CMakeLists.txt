@@ -11,7 +11,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(maf_core STATIC
     src/core/Hello.cpp
- "src/utils/Math.cpp")
+ "src/utils/Math.cpp" 
+ "include/maf/core/OwnedAudioBuffer.tpp")
 
 target_include_directories(maf_core
     PUBLIC
@@ -30,7 +31,14 @@ else()
 endif()
 
 
-add_executable(maf_hello src/hello.cpp "include/maf/core/Hello.h" "src/core/Hello.cpp" "include/maf/utils/Math.h" "src/utils/Math.cpp")
+add_executable(maf_hello 
+    "src/hello.cpp" 
+    "include/maf/core/Hello.h" 
+    "src/core/Hello.cpp" 
+    "include/maf/utils/Math.h" 
+    "src/utils/Math.cpp" 
+    "include/maf/core/OwnedAudioBuffer.h"
+)
 
 target_link_libraries(maf_hello
     PRIVATE
