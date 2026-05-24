@@ -43,30 +43,21 @@ namespace maf::core
     template <typename SampleType>
     SampleType* OwnedAudioBuffer<SampleType>::getWritePointer(size_t channel)
     {
-        if (channel >= numChannels_)
-        {
-            throw std::out_of_range("Channel index out of range");
-        }
+        assert(channel < numChannels_);
         return channelPointers_[channel];
     }
    
     template <typename SampleType>
     const SampleType* OwnedAudioBuffer<SampleType>::getReadPointer(size_t channel) const
     {
-        if (channel >= numChannels_)
-        {
-            throw std::out_of_range("Channel index out of range");
-        }
+        assert(channel < numChannels_);
         return channelPointers_[channel];
     }
 
     template <typename SampleType>
     SampleType OwnedAudioBuffer<SampleType>::getSample(size_t channel, size_t sample) const
     {
-        if (channel >= numChannels_ || sample >= numSamples_)
-        {
-            throw std::out_of_range("Channel or sample index out of range");
-        }
+        assert(channel < numChannels_ && sample < numSamples_);
 
         return channelPointers_[channel][sample];
     }
@@ -74,10 +65,7 @@ namespace maf::core
     template <typename SampleType>
     void OwnedAudioBuffer<SampleType>::setSample(size_t channel, size_t sample, SampleType value)
     {
-        if (channel >= numChannels_ || sample >= numSamples_)
-        {
-            throw std::out_of_range("Channel or sample index out of range");
-        }
+        assert(channel < numChannels_ && sample < numSamples_);
 
         channelPointers_[channel][sample] = value;
     }
@@ -93,6 +81,12 @@ namespace maf::core
     void OwnedAudioBuffer<SampleType>::fill(SampleType value)
     {
         std::fill(data_.begin(), data_.end(), value);
+    }
+
+    template <typename SampleType> 
+    AudioBufferView<SampleType> OwnedAudioBuffer<SampleType>::view()
+    {
+        return AudioBufferView<SampleType>(channelPointers_.data(), numChannels_, numSamples_);
     }
     
 } // namespace maf

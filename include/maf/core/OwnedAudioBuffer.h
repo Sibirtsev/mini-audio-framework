@@ -1,7 +1,8 @@
 #pragma once
 
 #include <vector>
-#include <stdexcept>
+#include <cassert>
+#include "AudioBufferView.h"
 
 namespace maf::core
 {
@@ -25,6 +26,8 @@ namespace maf::core
 
         void clear();
         void fill(SampleType value);
+
+        AudioBufferView<SampleType> view();
 
       private:
         size_t numChannels_ = 0;
