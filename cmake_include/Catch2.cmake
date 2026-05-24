@@ -11,7 +11,8 @@ FetchContent_MakeAvailable(Catch2)
 add_executable(maf_tests
  "tests/utils/MathTests.cpp"
  "tests/core/OwnedAudioBufferTests.cpp"
- "tests/core/AudioBufferViewTests.cpp")
+ "tests/core/AudioBufferViewTests.cpp"
+ "tests/realtime/ScopedNoDenormalsTests.cpp")
 
 target_link_libraries(maf_tests
     PRIVATE

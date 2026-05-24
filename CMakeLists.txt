@@ -13,7 +13,8 @@ add_library(maf_core STATIC
  src/core/Hello.cpp
  "src/utils/Math.cpp" 
  "include/maf/core/OwnedAudioBuffer.tpp"
- "include/maf/core/AudioBufferView.tpp")
+ "include/maf/core/AudioBufferView.tpp"
+ "src/realtime/ScopedNoDenormals.cpp")
 
 target_include_directories(maf_core
     PUBLIC
@@ -47,7 +48,8 @@ add_executable(maf_hello
  "src/utils/Math.cpp" 
  "include/maf/core/OwnedAudioBuffer.h"
  "include/maf/core/AudioBufferView.h"
-)
+ "include/maf/realtime/ScopedNoDenormals.h"
+ "src/realtime/ScopedNoDenormals.cpp")
 
 target_link_libraries(maf_hello
     PRIVATE
