@@ -9,9 +9,9 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2)
 
 add_executable(maf_tests
-    "tests/utils/MathTests.cpp"
-    "tests/core/OwnedAudioBufferTests.cpp"
-)
+ "tests/utils/MathTests.cpp"
+ "tests/core/OwnedAudioBufferTests.cpp"
+ "tests/core/AudioBufferViewTests.cpp")
 
 target_link_libraries(maf_tests
     PRIVATE

@@ -121,3 +121,14 @@ TEST_CASE("OwnedAudioBuffer updates dimensions after resize", "[core][buffer]")
     REQUIRE(buffer.getSample(1, 511) == -0.5f);
 }
 
+TEST_CASE("OwnedAudioBuffer creates a view over its owned samples", "[core][buffer]")
+{
+    maf::core::OwnedAudioBuffer<float> buffer(2, 4);
+
+    auto view = buffer.view();
+
+    view.setSample(0, 1, 0.75f);
+
+    REQUIRE(buffer.getSample(0, 1) == 0.75f);
+}
+
